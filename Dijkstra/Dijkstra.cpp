@@ -12,7 +12,7 @@ int _tmain(int argc, _TCHAR* argv[])
 {
 	int preVertex;
 	int nextVertex;
-	AdjMGraph_L G;
+	AdjMGraph G;
 	int data[7][7]={{MAXNUM,28,MAXNUM,MAXNUM,MAXNUM,10,MAXNUM},
 					{28,MAXNUM,16,MAXNUM,MAXNUM,MAXNUM,14},
 					{MAXNUM,16,MAXNUM,12,MAXNUM,MAXNUM,MAXNUM},
