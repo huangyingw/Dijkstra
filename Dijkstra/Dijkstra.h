@@ -46,14 +46,14 @@ class Dijkstra
 	public:
 		int* data;
 		AdjMGraph amg;
-		Dijkstra();
+		Dijkstra(int* data,int dim);//创建图用邻接矩阵表示
 		~Dijkstra();
-		void CreatAdjMGraph_L(int* data,int dim);//创建图用邻接矩阵表示
+		//void CreatAdjMGraph_L(int* data,int dim);//创建图用邻接矩阵表示
 		void ShortestPath(AdjMGraph gra,int n,int v);
 		void BellmanFord(AdjMGraph gra,int n,int v); //在带权有向图中有的边具有负的权值。从顶点v找到所有其它顶点的最短路径。
 };
 
-void Dijkstra::CreatAdjMGraph_L(int* data,int dim)//创建图用邻接矩阵表示
+Dijkstra::Dijkstra(int* data,int dim)//创建图用邻接矩阵表示
 {
 	amg.vexNum=7;
 	amg.arcNum=9;
