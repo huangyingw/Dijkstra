@@ -5,6 +5,7 @@
 #include "..\..\stack\stack\stack.h"
 #include <stdio.h>
 #include<iostream>
+#include <fstream>
 using namespace std;
 
 #define MAXVERTEX 20
@@ -38,11 +39,11 @@ typedef struct				//邻接链表 表头结点
 	ArcNode *firstEdge;		//指向第一条依附该结点的弧的指针
 }AdjList;
 
-
 class Dijkstra
 {
 	private:
-
+		ofstream fout;
+		 
 	public:
 		int* data;
 		AdjMGraph amg;
@@ -52,8 +53,14 @@ class Dijkstra
 		void BellmanFord(int n,int v); //在带权有向图中有的边具有负的权值。从顶点v找到所有其它顶点的最短路径。
 };
 
+Dijkstra::~Dijkstra()
+{
+		fout.close();
+}
+
 Dijkstra::Dijkstra(int* data,int dim)//创建图用邻接矩阵表示
 {
+	fout.open("output.txt");
 	amg.vexNum=7;
 	amg.arcNum=9;
 	for(int i=0;i<dim;i++)
