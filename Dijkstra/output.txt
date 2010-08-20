@@ -1,0 +1,24 @@
+0 was selected into the shortest vertexes arrays
+5 was selected into the shortest vertexes arrays
+now changing the 4's dist to 35
+now changing the 4's neighbor vertex to be 5
+1 was selected into the shortest vertexes arrays
+now changing the 2's dist to 44
+now changing the 2's neighbor vertex to be 1
+now changing the 6's dist to 42
+now changing the 6's neighbor vertex to be 1
+4 was selected into the shortest vertexes arrays
+now changing the 3's dist to 57
+now changing the 3's neighbor vertex to be 4
+6 was selected into the shortest vertexes arrays
+2 was selected into the shortest vertexes arrays
+now changing the 3's dist to 56
+now changing the 3's neighbor vertex to be 2
+3 was selected into the shortest vertexes arrays
+0:0,->0
+1:0,1,->28
+2:0,1,2,->44
+3:0,1,2,3,->56
+4:0,5,4,->35
+5:0,5,->10
+6:0,1,6,->42

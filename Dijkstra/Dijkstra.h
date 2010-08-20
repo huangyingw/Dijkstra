@@ -68,7 +68,7 @@ void Dijkstra::PrintPath()
 		SeqStack<int> *S=new SeqStack<int>();
 		S->InitStack();
 	
-		cout<<i<<":";
+		fout<<i<<":";
 		if(preVertex>=0)
 		{
 			S->Push(preVertex);
@@ -82,9 +82,9 @@ void Dijkstra::PrintPath()
 		
 		while(!S->StackEmpty())
 		{
-			cout<<S->Pop()<<",";
+			fout<<S->Pop()<<",";
 		}
-		cout<<"->"<<dist[i]<<endl;
+		fout<<"->"<<dist[i]<<endl;
 	}
 }
 
@@ -133,7 +133,7 @@ void Dijkstra::ShortestPath(int n,int v)
 			path[i]=-1;					//路径存放数组初始化
 		}
 	}
-	cout<<v<<" was selected into the shortest vertexes arrays"<<endl;
+	fout<<v<<" was selected into the shortest vertexes arrays"<<endl;
 	S[v]=true;//顶点v加入顶点集合
 	dist[v]=0;//v到v的距离为0
 	for(int i=0;i<n-1;i++)//从顶点v确定n-1条路径
@@ -148,15 +148,15 @@ void Dijkstra::ShortestPath(int n,int v)
 				min=dist[j];
 			}
 		}
-		cout<<u<<" was selected into the shortest vertexes arrays"<<endl;
+		fout<<u<<" was selected into the shortest vertexes arrays"<<endl;
 		S[u]=true;//将顶点S加入集合S，表示它已在最短路径上
 		for(int w=0;w<n;w++)//修改与u相邻的w顶点的最短距离
 		{
 			if(!S[w]&&amg.adjMatrixes[u][w].weight<MAXNUM&&dist[u]+amg.adjMatrixes[u][w].weight<dist[w])//w顶点不在最短路径的顶点集合&&u,w相邻&&经u到w的距离小于当前w的最短路径
 			{
 				dist[w]=dist[u]+amg.adjMatrixes[u][w].weight;//修改w的最短距离
-				cout<<"now changing the "<<w<<"'s dist to "<<dist[w]<<endl;
-				cout<<"now changing the "<<w<<"'s neighbor vertex to be "<<u<<endl;
+				fout<<"now changing the "<<w<<"'s dist to "<<dist[w]<<endl;
+				fout<<"now changing the "<<w<<"'s neighbor vertex to be "<<u<<endl;
 				path[w]=u;//修改w的最短路径
 			}
 		}
