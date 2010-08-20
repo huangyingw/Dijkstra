@@ -2,7 +2,7 @@
 //
 
 #include "stdafx.h"
-#include "stack.h"
+#include "..\..\stack\stack\stack.h"
 #include <stdio.h>
 #include<iostream>
 using namespace std;
