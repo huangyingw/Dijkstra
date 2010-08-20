@@ -13,24 +13,10 @@ int dist[MAXVERTEX];
 bool S[MAXVERTEX];
 int path[MAXVERTEX];
 
-
-
-
 typedef struct
 {
 	int weight;//弧的权值
 }AdjMatrix[20][20];
-
-class Dijkstra
-{
-	private:
-
-	public:
-		int* data;
-		Dijkstra();
-		~Dijkstra();
-		
-};
 
 
 typedef struct				//图的邻接矩阵形式定义
@@ -58,6 +44,18 @@ typedef struct//图的定义
 	int vexNum;			//顶点数目
 	int arcNum;//弧数目
 }AdjLgraph;
+
+class Dijkstra
+{
+	private:
+
+	public:
+		int* data;
+		Dijkstra();
+		~Dijkstra();
+		
+};
+
 
 int CreatAdjMGraph_L(AdjMGraph_L &G,int* data,int dim)//创建图用邻接矩阵表示
 {
