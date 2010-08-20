@@ -48,34 +48,34 @@ class Dijkstra
 		AdjMGraph amg;
 		Dijkstra();
 		~Dijkstra();
-		int CreatAdjMGraph_L(AdjMGraph &G,int* data,int dim);//创建图用邻接矩阵表示
+		int CreatAdjMGraph_L(int* data,int dim);//创建图用邻接矩阵表示
 		void ShortestPath(AdjMGraph gra,int n,int v);
 		void BellmanFord(AdjMGraph gra,int n,int v); //在带权有向图中有的边具有负的权值。从顶点v找到所有其它顶点的最短路径。
 };
 
-int Dijkstra::CreatAdjMGraph_L(AdjMGraph &G,int* data,int dim)//创建图用邻接矩阵表示
+int Dijkstra::CreatAdjMGraph_L(int* data,int dim)//创建图用邻接矩阵表示
 {
-	G.vexNum=7;
-	G.arcNum=9;
+	amg.vexNum=7;
+	amg.arcNum=9;
 	for(int i=0;i<dim;i++)
 	{
-		for(int j=0;j!=G.vexNum;++j)
+		for(int j=0;j!=amg.vexNum;++j)
 		{ 
-			G.adjMatrixes[i][j].weight=MAXNUM;
+			amg.adjMatrixes[i][j].weight=MAXNUM;
 		}
 			
-		_itoa_s( i, &G.vexs[i],8,10);
+		_itoa_s( i, &amg.vexs[i],8,10);
 
 		for(int j=0;j<dim;j++)
 		{
 			if(data[dim*i+j]<MAXNUM)
 			{
-				G.adjMatrixes[i][j].weight=data[dim*i+j];
-				G.adjMatrixes[j][i].weight=data[dim*i+j];
+				amg.adjMatrixes[i][j].weight=data[dim*i+j];
+				amg.adjMatrixes[j][i].weight=data[dim*i+j];
 			}
 		}
 	}
-	return G.vexNum;
+	return amg.vexNum;
 }
 
 void Dijkstra::ShortestPath(AdjMGraph gra,int n,int v)
