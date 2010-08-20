@@ -45,6 +45,7 @@ class Dijkstra
 
 	public:
 		int* data;
+		AdjMGraph amg;
 		Dijkstra();
 		~Dijkstra();
 		int CreatAdjMGraph_L(AdjMGraph &G,int* data,int dim);//创建图用邻接矩阵表示
