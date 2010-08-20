@@ -53,10 +53,12 @@ class Dijkstra
 		int* data;
 		Dijkstra();
 		~Dijkstra();
-		
+		int CreatAdjMGraph_L(AdjMGraph_L &G,int* data,int dim);//创建图用邻接矩阵表示
+		void ShortestPath(AdjMGraph_L gra,int n,int v);
+		void BellmanFord(AdjMGraph_L gra,int n,int v); //在带权有向图中有的边具有负的权值。从顶点v找到所有其它顶点的最短路径。
 };
 
-int CreatAdjMGraph_L(AdjMGraph_L &G,int* data,int dim)//创建图用邻接矩阵表示
+int Dijkstra::CreatAdjMGraph_L(AdjMGraph_L &G,int* data,int dim)//创建图用邻接矩阵表示
 {
 	G.vexNum=7;
 	G.arcNum=9;
@@ -81,7 +83,7 @@ int CreatAdjMGraph_L(AdjMGraph_L &G,int* data,int dim)//创建图用邻接矩阵表示
 	return G.vexNum;
 }
 
-void ShortestPath(AdjMGraph_L gra,int n,int v)
+void Dijkstra::ShortestPath(AdjMGraph_L gra,int n,int v)
 {
 	/*G是一个具有n个顶点的带权有向图，各边上的权值由Edge[i][j]给出。本算法建立起一个数组：
 	dist[j],0<=j<n, 是当前求到的从顶点v到顶点j的最短路径长度，同时用数组path[j],0<=j<n,存放
@@ -132,7 +134,7 @@ void ShortestPath(AdjMGraph_L gra,int n,int v)
 }
 
 /*边上权值为任意值的单源最短路径问题,此算法补足ShortestPath的不足*/
-void BellmanFord(AdjMGraph_L gra,int n,int v) //在带权有向图中有的边具有负的权值。从顶点v找到所有其它顶点的最短路径。
+void Dijkstra::BellmanFord(AdjMGraph_L gra,int n,int v) //在带权有向图中有的边具有负的权值。从顶点v找到所有其它顶点的最短路径。
 {
 	for(int i=0;i<n;i++)
 	{
