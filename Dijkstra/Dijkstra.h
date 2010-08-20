@@ -38,12 +38,6 @@ typedef struct				//邻接链表 表头结点
 	ArcNode *firstEdge;		//指向第一条依附该结点的弧的指针
 }AdjList;
 
-typedef struct//图的定义
-{
-	AdjList vertices[MAXVERTEX];
-	int vexNum;			//顶点数目
-	int arcNum;//弧数目
-}AdjLgraph;
 
 class Dijkstra
 {
