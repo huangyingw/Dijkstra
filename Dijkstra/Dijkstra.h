@@ -56,7 +56,6 @@ class Dijkstra
 		
 };
 
-
 int CreatAdjMGraph_L(AdjMGraph_L &G,int* data,int dim)//创建图用邻接矩阵表示
 {
 	G.vexNum=7;
