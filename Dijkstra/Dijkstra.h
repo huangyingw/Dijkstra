@@ -48,8 +48,8 @@ class Dijkstra
 		AdjMGraph amg;
 		Dijkstra(int* data,int dim);//创建图用邻接矩阵表示
 		~Dijkstra();
-		void ShortestPath(AdjMGraph gra,int n,int v);
-		void BellmanFord(AdjMGraph gra,int n,int v); //在带权有向图中有的边具有负的权值。从顶点v找到所有其它顶点的最短路径。
+		void ShortestPath(int n,int v);
+		void BellmanFord(int n,int v); //在带权有向图中有的边具有负的权值。从顶点v找到所有其它顶点的最短路径。
 };
 
 Dijkstra::Dijkstra(int* data,int dim)//创建图用邻接矩阵表示
@@ -76,7 +76,7 @@ Dijkstra::Dijkstra(int* data,int dim)//创建图用邻接矩阵表示
 	}
 }
 
-void Dijkstra::ShortestPath(AdjMGraph gra,int n,int v)
+void Dijkstra::ShortestPath(int n,int v)
 {
 	/*G是一个具有n个顶点的带权有向图，各边上的权值由Edge[i][j]给出。本算法建立起一个数组：
 	dist[j],0<=j<n, 是当前求到的从顶点v到顶点j的最短路径长度，同时用数组path[j],0<=j<n,存放
@@ -85,7 +85,7 @@ void Dijkstra::ShortestPath(AdjMGraph gra,int n,int v)
 	for(int i=0;i<n;i++)//dist,path数组初始化
 	{
 		//邻接矩阵第v行元素复制到dist中
-		dist[i]=gra.adjMatrixes[v][i].weight;
+		dist[i]=amg.adjMatrixes[v][i].weight;
 		S[i]=false;							//已求出最短路径的顶点集合初始化
 		if(i!=v&&dist[i]<MAXNUM)
 		{
@@ -115,9 +115,9 @@ void Dijkstra::ShortestPath(AdjMGraph gra,int n,int v)
 		S[u]=true;//将顶点S加入集合S，表示它已在最短路径上
 		for(int w=0;w<n;w++)//修改与u相邻的w顶点的最短距离
 		{
-			if(!S[w]&&gra.adjMatrixes[u][w].weight<MAXNUM&&dist[u]+gra.adjMatrixes[u][w].weight<dist[w])//w顶点不在最短路径的顶点集合&&u,w相邻&&经u到w的距离小于当前w的最短路径
+			if(!S[w]&&amg.adjMatrixes[u][w].weight<MAXNUM&&dist[u]+amg.adjMatrixes[u][w].weight<dist[w])//w顶点不在最短路径的顶点集合&&u,w相邻&&经u到w的距离小于当前w的最短路径
 			{
-				dist[w]=dist[u]+gra.adjMatrixes[u][w].weight;//修改w的最短距离
+				dist[w]=dist[u]+amg.adjMatrixes[u][w].weight;//修改w的最短距离
 				cout<<"now changing the "<<w<<"'s dist to "<<dist[w]<<endl;
 				cout<<"now changing the "<<w<<"'s neighbor vertex to be "<<u<<endl;
 				path[w]=u;//修改w的最短路径
@@ -127,12 +127,12 @@ void Dijkstra::ShortestPath(AdjMGraph gra,int n,int v)
 }
 
 /*边上权值为任意值的单源最短路径问题,此算法补足ShortestPath的不足*/
-void Dijkstra::BellmanFord(AdjMGraph gra,int n,int v) //在带权有向图中有的边具有负的权值。从顶点v找到所有其它顶点的最短路径。
+void Dijkstra::BellmanFord(int n,int v) //在带权有向图中有的边具有负的权值。从顶点v找到所有其它顶点的最短路径。
 {
 	for(int i=0;i<n;i++)
 	{
 		//对dist初始化
-		dist[i]=gra.adjMatrixes[v][i].weight;
+		dist[i]=amg.adjMatrixes[v][i].weight;
 		//对path初始化
 		if(i!=v&&dist[i]<MAXNUM)
 			path[i]=v;
@@ -147,9 +147,9 @@ void Dijkstra::BellmanFord(AdjMGraph gra,int n,int v) //在带权有向图中有的边具有
 			{
 				for(int i=0;i<n;i++)
 				{
-					if(gra.adjMatrixes[i][u].weight>0&&gra.adjMatrixes[i][u].weight<MAXNUM&&dist[u]>dist[i]+gra.adjMatrixes[i][u].weight)
+					if(amg.adjMatrixes[i][u].weight>0&&amg.adjMatrixes[i][u].weight<MAXNUM&&dist[u]>dist[i]+amg.adjMatrixes[i][u].weight)
 					{
-						dist[u]=dist[i]+gra.adjMatrixes[i][u].weight;
+						dist[u]=dist[i]+amg.adjMatrixes[i][u].weight;
 						path[u]=i;		//绕i的路径长度小，修改
 					}
 				}
