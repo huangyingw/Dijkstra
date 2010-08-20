@@ -25,32 +25,31 @@ int _tmain(int argc, _TCHAR* argv[])
 	dij->ShortestPath(7,0);
 
 
-	/*
 	for(int i=0;i<7;i++)
 	{
 		preVertex=i;
-		SeqStack *S=new SeqStack();
-		InitStack(S);
+		SeqStack<int> *S=new SeqStack<int>();
+		S->InitStack();
 	
 		cout<<i<<":";
 		if(preVertex>=0)
 		{
-			Push(S,preVertex);
+			S->Push(preVertex);
 		}
 		preVertex=path[preVertex];
 		while(preVertex>=0)
 		{	
-			Push(S,preVertex);
+			S->Push(preVertex);
 			preVertex=path[preVertex];
 		}
 		
-		while(!StackEmpty(S))
+		while(!S->StackEmpty())
 		{
-			cout<<Pop(S)<<",";
+			cout<<S->Pop()<<",";
 		}
 		cout<<"->"<<dist[i]<<endl;
 	}
-	*/
+
 	return 0;
 }
 
