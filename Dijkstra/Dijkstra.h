@@ -50,12 +50,42 @@ class Dijkstra
 		Dijkstra(int* data,int dim);//创建图用邻接矩阵表示
 		~Dijkstra();
 		void ShortestPath(int n,int v);
+		void PrintPath();
 		void BellmanFord(int n,int v); //在带权有向图中有的边具有负的权值。从顶点v找到所有其它顶点的最短路径。
 };
 
 Dijkstra::~Dijkstra()
 {
 		fout.close();
+}
+
+void Dijkstra::PrintPath()
+{
+	int preVertex;
+	for(int i=0;i<7;i++)
+	{
+		preVertex=i;
+		SeqStack<int> *S=new SeqStack<int>();
+		S->InitStack();
+	
+		cout<<i<<":";
+		if(preVertex>=0)
+		{
+			S->Push(preVertex);
+		}
+		preVertex=path[preVertex];
+		while(preVertex>=0)
+		{	
+			S->Push(preVertex);
+			preVertex=path[preVertex];
+		}
+		
+		while(!S->StackEmpty())
+		{
+			cout<<S->Pop()<<",";
+		}
+		cout<<"->"<<dist[i]<<endl;
+	}
 }
 
 Dijkstra::Dijkstra(int* data,int dim)//创建图用邻接矩阵表示

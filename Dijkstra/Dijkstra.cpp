@@ -10,8 +10,6 @@ using namespace std;
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	int preVertex;
-	int nextVertex;
 	
 	AdjMGraph G;
 	int data[7][7]={{MAXNUM,28,MAXNUM,MAXNUM,MAXNUM,10,MAXNUM},
@@ -23,32 +21,7 @@ int _tmain(int argc, _TCHAR* argv[])
 					{MAXNUM,14,MAXNUM,18,24,MAXNUM,MAXNUM}};
 	Dijkstra *dij=new Dijkstra(*data,7);
 	dij->ShortestPath(7,0);
-
-
-	for(int i=0;i<7;i++)
-	{
-		preVertex=i;
-		SeqStack<int> *S=new SeqStack<int>();
-		S->InitStack();
-	
-		cout<<i<<":";
-		if(preVertex>=0)
-		{
-			S->Push(preVertex);
-		}
-		preVertex=path[preVertex];
-		while(preVertex>=0)
-		{	
-			S->Push(preVertex);
-			preVertex=path[preVertex];
-		}
-		
-		while(!S->StackEmpty())
-		{
-			cout<<S->Pop()<<",";
-		}
-		cout<<"->"<<dist[i]<<endl;
-	}
+	dij->PrintPath();
 
 	return 0;
 }
